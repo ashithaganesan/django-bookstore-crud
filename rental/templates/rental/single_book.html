@@ -1,0 +1,92 @@
+{% extends "rental/base.html" %}
+{% load static %}
+
+{% block title %}View Book{% endblock %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static 'rental/single_book.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="book-container">
+        <img src="{{ book.cover_image.url }}" alt="{{ book.book_name }}" class="book-cover">
+        <div class="book-details">
+            <h1>{{ book.book_name }}</h1>
+            <p>Author: {{ book.author_name }}</p>
+            <p>Email: {{ book.author_email }}</p>
+            <p>Rating: {{ book.rating }}</p>
+            <p>Cost: ${{ book.cost }}</p>
+            {% if book.status %}
+                <p class="available">Available</p>
+            {% else %}
+                <p class="not-available">Not Available</p>
+            {% endif %}
+        </div>
+  
+        <div class="button-container">
+            <a href="{% url 'update' book.id %}"><button>Edit</button></a>
+            <a href="{% url 'delete' book.id %}"><button>Delete</button></a>
+        </div>
+    
+    </div>
+
+    <div class="book-summary">
+        <h3>Summary</h3>
+        <p>{{ book.summary }}</p>
+    </div>
+
+    <div class="back-home">
+        <h3><a href="{% url 'home' %}">Back to Home!</a></h3>
+    </div>
+{% endblock %}
+
+
+{% comment %} {% extends "rental/base.html" %}
+{% load static %}
+
+{% block title %}View Book{% endblock %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static 'rental/single_book.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h2><a href="{% url "update" book.id %}">Edit the book details!</a></h2> 
+    <h2><a href="{% url "delete" book.id %}">Delete this book!</a></h2> 
+    <div class="book-container">
+        <img src="{{ book.cover_image.url }}" alt="image" class="book-cover">
+        <div class="book-details">
+            <h1>{{ book.book_name }}</h1>
+            <h3>Author: {{ book.author_name }}</h3>
+            <h4>Email: {{ book.author_email }}</h4>
+            <p>Rating: {{ book.rating }}</p>
+        </div>
+    </div>
+
+    <div class="book-summary">
+        <p>{{ book.summary }}</p>
+    </div>
+
+    <div class="book-extra-details">
+        <p>Cost: {{ book.cost }}</p>
+        <p>Availability: {{ book.status }}</p>
+    </div>
+
+    <h3><a href="{% url "home" %}">Back to Home!</a></h3>
+{% endblock %} {% endcomment %}
+
+{% comment %} {% extends "rental/base.html" %}
+
+{% block title %}View Book{% endblock %}
+
+{% block content %}
+    <h1>{{ book.book_name }}</h1>
+    <h2>Author: {{ book.author_name }}</h2>
+    <h4>Email: {{ book.author_email }}</h4>
+    <img src="{{ book.cover_image.url}}" alt="image">
+    <p>{{ book.summary }}</p>
+    <p>Rating: {{ book.rating }}</p>
+    <p>Cost: {{ book.cost }}</p>
+    <p>Availability: {{ book.status }}</p>
+
+{% endblock %} {% endcomment %}
