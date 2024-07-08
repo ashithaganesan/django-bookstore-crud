@@ -14,3 +14,4 @@ Setup Instructions:
 3. Configure the database
 4. Apply migrations
 5. Run the Development Server
+6. Direct to /home to view the home page.
